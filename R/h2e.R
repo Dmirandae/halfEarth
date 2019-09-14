@@ -80,18 +80,58 @@ datosIniciales <-matrix(
 
 ## aqui es solo una vez por matriz generada, debe hacerse n veces
 
-borradas  <- lapply(asignadas, FUN=eliminarSpCeldas)
+#borradas  <- lapply(asignadas, FUN=eliminarSpCeldas)
+
+#datosFinales <-   matrix(
+#    unlist(lapply(borradas, FUN=conteo)),
+#    ncol=4,byrow=T)
+
+#borradas  <- lapply(asignadas, FUN=eliminarSpCeldas)
+
+#datosFinales <-   matrix(
+#    unlist(lapply(borradas, FUN=conteo)),
+#    ncol=4,byrow=T)
 
 
-datosFinales <-   matrix(
-    unlist(lapply(borradas, FUN=conteo)),
-    ncol=4,byrow=T)
+tmp2  <-  function(x,nTimes){
 
-verdaderosResultados  <- cbind(
-    as.data.frame(datosIniciales),
-    as.data.frame(datosFinales))
-
-names(verdaderosResultados) <-   c(paste0("Inicial_",c("cSp","mSp","cAr","mAr")),paste0("PostDel_",c("cSp","mSp","cAr","mAr")))
+#    nTimes  <-  10
+    
+    timesThanos  <-  list()
 
 
-summary(verdaderosResultados)
+    for(numTemp0 in 1:nTimes){
+
+        timesThanos[[numTemp0]]  <- x
+
+    }
+
+    borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas)
+
+    datosFinales <- matrix(unlist(lapply(borradas, FUN=conteo)),
+                           ncol=4,byrow=T)
+
+    verdaderosResultadosborrados  <-  as.data.frame(datosFinales)
+
+    names(verdaderosResultadosborrados) <-   c(paste0("borrados_",c("cSp","mSp","cAr","mAr")))
+
+    return(summary(verdaderosResultadosborrados))
+
+}
+    
+
+
+#asignadas  <-
+
+    lapply(asignadas, FUN=tmp2,nTimes=3) 
+
+
+
+#verdaderosResultados  <- cbind(
+#    as.data.frame(datosIniciales),
+#    as.data.frame(datosFinales))
+
+#names(verdaderosResultados) <-   c(paste0("Inicial_",c("cSp","mSp","cAr","mAr")),paste0("PostDel_",c("cSp","mSp","cAr","mAr")))
+
+
+#summary(verdaderosResultados)
