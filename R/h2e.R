@@ -123,7 +123,7 @@ tmp2  <-  function(x,nTimes){
 
 #asignadas  <-
 
-    lapply(asignadas, FUN=tmp2,nTimes=3) 
+    lapply(asignadas, FUN=tmp2,nTimes=nBorrados) 
 
 
 

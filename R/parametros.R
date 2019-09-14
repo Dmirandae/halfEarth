@@ -13,6 +13,7 @@ nRate      <-  0.001
 
 distribRichness <- "fix"
 
+nBorrados    <-  10
 
 numParticiones        <-  1
 
