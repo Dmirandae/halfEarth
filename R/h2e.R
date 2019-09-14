@@ -1,5 +1,6 @@
 
 
+
 ############################
 
 rm(list=ls())
@@ -12,6 +13,17 @@ for( i in a$V1 ){
 	source(i) 
 	}
 
+
+##
+
+library(parallel)
+ 
+# Calculate the number of cores
+#no_cores <- detectCores() - 1
+ 
+# Initiate cluster
+                                        #
+#cl <- makeCluster(no_cores)
 
 ##ls()
 
@@ -95,7 +107,8 @@ datosIniciales <-matrix(
 
 tmp2  <-  function(x,nTimes){
 
-#    nTimes  <-  10
+# Initiate cluster
+#cl <- makeCluster(no_cores)
     
     timesThanos  <-  list()
 
@@ -106,8 +119,13 @@ tmp2  <-  function(x,nTimes){
 
     }
 
-    borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas)
+     borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas)
+    
+#    borradas  <- mclapply(timesThanos, eliminarSpCeldas,
+#                          mc.cores = no_cores)
+    
 
+    
     datosFinales <- matrix(unlist(lapply(borradas, FUN=conteo)),
                            ncol=4,byrow=T)
 
@@ -120,12 +138,10 @@ tmp2  <-  function(x,nTimes){
 }
     
 
-
-#asignadas  <-
-
-    lapply(asignadas, FUN=tmp2,nTimes=nBorrados) 
-
-
+system.time(
+asignadas  <- lapply(asignadas, FUN=tmp2, nTimes=nBorrados) 
+)
+matrix(unlist(asignadas), ncol=6, byrow=TRUE)
 
 #verdaderosResultados  <- cbind(
 #    as.data.frame(datosIniciales),
