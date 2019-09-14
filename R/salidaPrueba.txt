@@ -1,0 +1,401 @@
+[1] "integer"
+param1: nSp 10 Celdas 10 replic 100[[1]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[2]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[3]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[4]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[5]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[6]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[7]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[8]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[9]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[10]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[11]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[12]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[13]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[14]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[15]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[16]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[17]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[18]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[19]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[20]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[21]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[22]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[23]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[24]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[25]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[26]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[27]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[28]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[29]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[30]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[31]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[32]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[33]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[34]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[35]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[36]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[37]]
+cSp mSp cAr mAr 
+  9   1  10   1 
+
+[[38]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[39]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[40]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[41]]
+cSp mSp cAr mAr 
+  4   1  10   1 
+
+[[42]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[43]]
+cSp mSp cAr mAr 
+  3   1  10   1 
+
+[[44]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[45]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[46]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[47]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[48]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[49]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[50]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[51]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[52]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[53]]
+cSp mSp cAr mAr 
+  9   1  10   1 
+
+[[54]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[55]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[56]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[57]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[58]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[59]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[60]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[61]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[62]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[63]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[64]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[65]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[66]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[67]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[68]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[69]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[70]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[71]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[72]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[73]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[74]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[75]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[76]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[77]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[78]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[79]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[80]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[81]]
+cSp mSp cAr mAr 
+  9   1  10   1 
+
+[[82]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[83]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[84]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[85]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[86]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[87]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[88]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[89]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[90]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[91]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[92]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[93]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[94]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[95]]
+cSp mSp cAr mAr 
+  7   1  10   1 
+
+[[96]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[97]]
+cSp mSp cAr mAr 
+  6   1  10   1 
+
+[[98]]
+cSp mSp cAr mAr 
+  8   1  10   1 
+
+[[99]]
+cSp mSp cAr mAr 
+  5   1  10   1 
+
+[[100]]
+cSp mSp cAr mAr 
+  4   1  10   1 
+
