@@ -49,11 +49,8 @@ if (!interactive()) {
 
 }
 
-## cat("param1: nSp",nSp,"Celdas",params$nCells,"replic",params$nReplicas)
 
-
-## una sola de ejemplo
-
+## print(unlist(params))
 
 
 ## listado nSp NReplicas 
@@ -79,7 +76,7 @@ tmp1  <-  function(x){
 
 asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1) 
 
-
+#asignadasIniciales
 #cat("\n")
 
 
@@ -88,6 +85,7 @@ MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
 
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
 
+                                        #
 #MatrizIniciales
 
 
@@ -121,13 +119,11 @@ tmp2  <-  function(x,nTimes){
     tpt1  <-  as.data.frame(tpt1)
     
     colnames(tpt1) <- c("cSp","mSp","cAr","mAr")
-
     
     ver1  <-  cbind(as.data.frame(tpt1),
-                      as.data.frame(verdaderosResultadosborrados))
-
+                    as.data.frame(verdaderosResultadosborrados))    
+    
     return(ver1)
-
 }
     
 
@@ -135,12 +131,15 @@ tmp2  <-  function(x,nTimes){
 
 asignadasBorradas  <- lapply(asignadasIniciales, FUN=tmp2, nTimes=params$nBorrados)   #)
 
-
 #asignadasBorradas 
 
-salida  <- matrix(unlist(asignadasBorradas),ncol=8,byrow=TRUE)
+salida  <- do.call(rbind, asignadasBorradas)
 
-colnames(salida)  <-  c("cSp","mSp","cAr","mAr","borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
+
+colnames(salida)  <-  c("cSp","mSp","cAr","mAr",
+                        "borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
+
+#salida
 
 #tpt2  <- matrix(resInicial, ncol=4,nrow=nTimes,byrow=TRUE)
 #tpt2  <-  as.data.frame(tpt1)

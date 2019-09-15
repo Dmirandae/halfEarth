@@ -1,7 +1,10 @@
 
-asignarSpCeldas  <- function (vectorX,numSpArea=1,
+asignarSpCeldas  <- function (vectorX,
+                              numSpArea=1,
                               #params$nSp=params$nSp,
-                              distNum="fix", paramNum=0.5){
+                              distNum="fix", 
+                              paramNum=0.5){
+
     if(tolower(distNum)=="fix"){
 
         vectorX[sample(length(vectorX), numSpArea)]  <- 1
@@ -26,6 +29,7 @@ asignarSpCeldas  <- function (vectorX,numSpArea=1,
 #        spID[spID <= 0 ]  <-  1
 #        vectorX[spID]  <- 1
 
+if (sum(vectorX) == 0){stop("La cagamos")}
     
     return(vectorX)
 }
