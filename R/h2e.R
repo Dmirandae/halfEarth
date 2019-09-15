@@ -1,5 +1,5 @@
 
-
+## todo : Roxygen!!!!!
 
 ############################
 
@@ -14,9 +14,7 @@ for( i in a$V1 ){
 	}
 
 
-##
-
-library(parallel)
+##library(parallel)
  
 # Calculate the number of cores
 #no_cores <- detectCores() - 1
@@ -49,8 +47,7 @@ if (!interactive()) {
 
 }
 
-
-cat("param1: nSp",nSp,"Celdas",nCells,"replic",nReplicas)
+## cat("param1: nSp",nSp,"Celdas",nCells,"replic",nReplicas)
 
 
 ## una sola de ejemplo
@@ -65,6 +62,8 @@ listado  <- rep(nSp,nReplicas)
 ## un listado de tablas limpias
 tablasLimpias  <- lapply(listado,matrizLimpia,nCells=nCells) 
 
+#tablasLimpias
+
 tmp1  <-  function(x){
     matDatAsig <- apply(x,
                         2,
@@ -77,77 +76,71 @@ tmp1  <-  function(x){
     }
 
 
-asignadas  <- lapply(tablasLimpias, FUN=tmp1) 
+asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1) 
 
 
-                                        #print(asignadas)
-
-                                        #
-cat("\n")
+#cat("\n")
 
 
-datosIniciales <-matrix(
-    unlist(lapply(asignadas, FUN=conteo)),
-    ncol=4,byrow=T)
+MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
+                           ncol=4,byrow=T)
 
-## aqui es solo una vez por matriz generada, debe hacerse n veces
+colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
 
-#borradas  <- lapply(asignadas, FUN=eliminarSpCeldas)
-
-#datosFinales <-   matrix(
-#    unlist(lapply(borradas, FUN=conteo)),
-#    ncol=4,byrow=T)
-
-#borradas  <- lapply(asignadas, FUN=eliminarSpCeldas)
-
-#datosFinales <-   matrix(
-#    unlist(lapply(borradas, FUN=conteo)),
-#    ncol=4,byrow=T)
+#MatrizIniciales
 
 
 tmp2  <-  function(x,nTimes){
 
-# Initiate cluster
-#cl <- makeCluster(no_cores)
-    
     timesThanos  <-  list()
-
 
     for(numTemp0 in 1:nTimes){
 
         timesThanos[[numTemp0]]  <- x
-
     }
 
      borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas)
     
 #    borradas  <- mclapply(timesThanos, eliminarSpCeldas,
 #                          mc.cores = no_cores)
-    
-
+   
     
     datosFinales <- matrix(unlist(lapply(borradas, FUN=conteo)),
                            ncol=4,byrow=T)
 
     verdaderosResultadosborrados  <-  as.data.frame(datosFinales)
 
-    names(verdaderosResultadosborrados) <-   c(paste0("borrados_",c("cSp","mSp","cAr","mAr")))
+    names(verdaderosResultadosborrados) <- c(paste0("borrados_",
+                                                    c("cSp","mSp","cAr","mAr")))
 
-    return(summary(verdaderosResultadosborrados))
+   resInicial  <- conteo(x)
+                           
+    tpt1  <- matrix(resInicial, ncol=4,nrow=nTimes,byrow=TRUE)
+
+    tpt1  <-  as.data.frame(tpt1)
+    
+    colnames(tpt1) <- c("cSp","mSp","cAr","mAr")
+
+    
+    ver1  <-  cbind(as.data.frame(tpt1),
+                      as.data.frame(verdaderosResultadosborrados))
+
+    return(ver1)
 
 }
     
 
-system.time(
-asignadas  <- lapply(asignadas, FUN=tmp2, nTimes=nBorrados) 
-)
-matrix(unlist(asignadas), ncol=6, byrow=TRUE)
+#system.time(
 
-#verdaderosResultados  <- cbind(
-#    as.data.frame(datosIniciales),
-#    as.data.frame(datosFinales))
-
-#names(verdaderosResultados) <-   c(paste0("Inicial_",c("cSp","mSp","cAr","mAr")),paste0("PostDel_",c("cSp","mSp","cAr","mAr")))
+asignadasBorradas  <- lapply(asignadasIniciales, FUN=tmp2, nTimes=nBorrados)   #)
 
 
-#summary(verdaderosResultados)
+#asignadasBorradas 
+
+salida  <- matrix(unlist(asignadasBorradas),ncol=8,byrow=TRUE)
+
+colnames(salida)  <-  c("cSp","mSp","cAr","mAr","borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
+
+
+as.data.frame(salida)
+
