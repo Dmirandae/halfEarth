@@ -7,6 +7,9 @@ rm(list=ls())
 
 ## funciones
 
+source("parametros.R")
+
+
 a <- read.csv("source.R",header=F)
 
 for( i in a$V1 ){ 
@@ -27,7 +30,6 @@ for( i in a$V1 ){
 
 ## parametros
 
-	source("parametros.R")
 
 
 if (!interactive()) {
@@ -36,31 +38,30 @@ if (!interactive()) {
 
     if (length(args)==0){
         cat("Uso Rscript x.R parámetros:\n
-             nSp nCells nReplicas nBorrados\nBye\n")
+             nSp params$nCells params$nReplicas params$nBorrados\nBye\n")
         quit(save="no")
     }
 
-    nSp        <-  args[1]
-    nCells     <-  args[2]
-    nReplicas  <-  args[3]
-    nBorrados  <-  args[4]
+    params$nSp        <-  args[1]
+    params$nCells     <-  args[2]
+    params$nReplicas  <-  args[3]
+    params$nBorrados  <-  args[4]
 
 }
 
-## cat("param1: nSp",nSp,"Celdas",nCells,"replic",nReplicas)
+## cat("param1: nSp",nSp,"Celdas",params$nCells,"replic",params$nReplicas)
 
 
 ## una sola de ejemplo
 
-#matriz0  <-  matrizLimpia(nSp=nSp, nCells=nCells) 
 
 
 ## listado nSp NReplicas 
-listado  <- rep(nSp,nReplicas)
+listado  <- rep(params$nSp,params$nReplicas)
 
 
 ## un listado de tablas limpias
-tablasLimpias  <- lapply(listado,matrizLimpia,nCells=nCells) 
+tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells) 
 
 #tablasLimpias
 
@@ -68,9 +69,9 @@ tmp1  <-  function(x){
     matDatAsig <- apply(x,
                         2,
                         asignarSpCeldas,
-                        paramNum=nRate,
-                        distNum=distribRichness,
-                        numSpEnArea = SpEnArea)
+                        paramNum=params$nRate,
+                        distNum=params$distribRichness,
+                        numSpArea = params$SpEnArea)
     
     return(matDatAsig)
     }
@@ -132,7 +133,7 @@ tmp2  <-  function(x,nTimes){
 
 #system.time(
 
-asignadasBorradas  <- lapply(asignadasIniciales, FUN=tmp2, nTimes=nBorrados)   #)
+asignadasBorradas  <- lapply(asignadasIniciales, FUN=tmp2, nTimes=params$nBorrados)   #)
 
 
 #asignadasBorradas 
@@ -141,6 +142,23 @@ salida  <- matrix(unlist(asignadasBorradas),ncol=8,byrow=TRUE)
 
 colnames(salida)  <-  c("cSp","mSp","cAr","mAr","borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
 
+#tpt2  <- matrix(resInicial, ncol=4,nrow=nTimes,byrow=TRUE)
+#tpt2  <-  as.data.frame(tpt1)
 
-as.data.frame(salida)
 
+salida0  <- as.data.frame(salida)
+
+cont  <- length(salida0$cSp)
+
+salida1  <- matrix(unlist(params),ncol=7,nrow=cont,byrow=TRUE)
+
+colnames(salida1)  <-  c(names(params))
+
+salida1  <-   as.data.frame(salida1)
+
+
+## to set accordingly
+
+options("width"=300)
+
+cbind(salida0,salida1)

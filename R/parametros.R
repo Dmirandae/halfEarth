@@ -1,24 +1,24 @@
     
 ## parametros
 
-nSp        <-  25
+params <- list() 
 
-nCells     <-  100 
+params$nSp        <-  25
 
-nReplicas  <-  10
+params$nCells     <-  100 
 
-SpEnArea   <-  1
+params$nReplicas  <-  10
 
-nRate      <-  0.001
+params$SpEnArea   <-  1
 
-distribRichness <- "fix"
+params$nRate      <-  0.001
 
-nBorrados    <-  10
+params$distribRichness <- "fix"
 
-numParticiones        <-  1
+params$nBorrados    <-  10
 
-numeroSpPorParticion  <- c(1) 
+#numParticiones        <-  1
 
+#numeroSpPorParticion  <- c(1) 
 
-
-conteoParticion       <-  nCells / numParticiones  
+#conteoParticion       <-  params$nCells / numParticiones  
