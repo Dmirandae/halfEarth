@@ -9,7 +9,7 @@ params$nCells     <-  100
 
 params$nReplicas  <-  10
 
-params$SpEnArea   <-  1
+params$SpEnArea   <-  8
 
 params$nRate      <-  0.001
 

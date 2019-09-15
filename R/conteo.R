@@ -9,6 +9,7 @@ conteo    <- function (matY) {
          
          vRes <- c(cSp,mSp,cAr,mAr)
          names(vRes) <- c("cSp","mSp","cAr","mAr")
+
   return(vRes)
 }
 

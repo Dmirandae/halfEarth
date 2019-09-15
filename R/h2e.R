@@ -9,7 +9,6 @@ rm(list=ls())
 
 source("parametros.R")
 
-
 a <- read.csv("source.R",header=F)
 
 for( i in a$V1 ){ 
@@ -61,7 +60,6 @@ listado  <- rep(params$nSp,params$nReplicas)
 tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells) 
 
 #tablasLimpias
-
 tmp1  <-  function(x){
     matDatAsig <- apply(x,
                         2,
@@ -79,12 +77,10 @@ asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1)
 #asignadasIniciales
 #cat("\n")
 
-
 MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
                            ncol=4,byrow=T)
 
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
-
                                         #
 #MatrizIniciales
 
@@ -160,4 +156,11 @@ salida1  <-   as.data.frame(salida1)
 
 options("width"=300)
 
-cbind(salida0,salida1)
+finalDF <-  as.data.frame(cbind(salida0,salida1))
+
+print(finalDF, row.names = FALSE)
+
+
+
+
+
