@@ -7,18 +7,15 @@ params$nSp        <-  25
 
 params$nCells     <-  100 
 
-params$nReplicas  <-  10
-
 params$SpEnArea   <-  8
 
-params$nRate      <-  0.001
-
-params$distribRichness <- "fix"
+params$nReplicas  <-  10
 
 params$nBorrados    <-  10
 
-#numParticiones        <-  1
+params$distribRichness <- "fix"
 
-#numeroSpPorParticion  <- c(1) 
+params$nRate      <-  0.001
 
-#conteoParticion       <-  params$nCells / numParticiones  
+
+

@@ -32,29 +32,51 @@ for( i in a$V1 ){
 
 
 if (!interactive()) {
-       
-    args <- as.integer(commandArgs(trailingOnly = TRUE))
+
+## https://www.r-bloggers.com/passing-arguments-to-an-r-script-from-command-lines/
+
+    args <- commandArgs(trailingOnly = TRUE)
 
     if (length(args)==0){
-        cat("Uso Rscript x.R parámetros:\n
-             nSp params$nCells params$nReplicas params$nBorrados\nBye\n")
+        cat("Uso Rscript x.R parámetros en secuencia:\n\t",
+            names(params),
+            "\n")
         quit(save="no")
-    }
+    }       
 
-    params$nSp        <-  args[1]
-    params$nCells     <-  args[2]
-    params$nReplicas  <-  args[3]
-    params$nBorrados  <-  args[4]
+    if(length(args) != 0){args <- as.integer(as.character(args))
+		}else{
+			args <- as.integer(args[1:7])
+			}
+
+params$nSp             <-   args[1]
+
+params$nCells          <-   args[2]
+
+params$SpEnArea        <-   args[3]
+
+params$nReplicas       <-   args[4]
+
+params$nBorrados       <-   args[5]
+
+if(params$nBorrados <= 0){params$nBorrados <- 1}
+
+params$distribRichness <-   as.character(args[6])
+
+params$nRate           <-   args[7]/100
 
 }
 
 
-## print(unlist(params))
+## 
+
+print(unlist(params))
 
 
 ## listado nSp NReplicas 
 listado  <- rep(params$nSp,params$nReplicas)
 
+#listado
 
 ## un listado de tablas limpias
 tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells) 
@@ -64,9 +86,9 @@ tmp1  <-  function(x){
     matDatAsig <- apply(x,
                         2,
                         asignarSpCeldas,
-                        paramNum=params$nRate,
-                        distNum=params$distribRichness,
-                        numSpArea = params$SpEnArea)
+                        paramNum   = params$nRate,
+                        distNum    = params$distribRichness,
+                        numSpArea  = params$SpEnArea)
     
     return(matDatAsig)
     }
