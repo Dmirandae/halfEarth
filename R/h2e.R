@@ -68,9 +68,7 @@ params$nRate           <-   args[7]/100
 }
 
 
-## 
-
-print(unlist(params))
+## print(unlist(params))
 
 
 ## listado nSp NReplicas 
