@@ -2,3 +2,4 @@ asignarSpCeldas.R
 conteo.R
 eliminarSpCeldas.R
 matrizLimpia.R
+misc.R

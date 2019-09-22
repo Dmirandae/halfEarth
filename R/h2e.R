@@ -16,6 +16,7 @@ for( i in a$V1 ){
 	}
 
 
+
 ##library(parallel)
  
 # Calculate the number of cores
@@ -59,7 +60,7 @@ params$nReplicas       <-   args[4]
 
 params$nBorrados       <-   args[5]
 
-if(params$nBorrados <= 0){params$nBorrados <- 1}
+#if(params$nBorrados <= 0){params$nBorrados <- 1}
 
 params$distribRichness <-   as.character(args[6])
 
@@ -80,17 +81,6 @@ listado  <- rep(params$nSp,params$nReplicas)
 tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells) 
 
 #tablasLimpias
-tmp1  <-  function(x){
-    matDatAsig <- apply(x,
-                        2,
-                        asignarSpCeldas,
-                        paramNum   = params$nRate,
-                        distNum    = params$distribRichness,
-                        numSpArea  = params$SpEnArea)
-    
-    return(matDatAsig)
-    }
-
 
 asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1) 
 
@@ -105,45 +95,9 @@ colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
 #MatrizIniciales
 
 
-tmp2  <-  function(x,nTimes){
-
-    timesThanos  <-  list()
-
-    for(numTemp0 in 1:nTimes){
-
-        timesThanos[[numTemp0]]  <- x
-    }
-
-     borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas)
-    
-#    borradas  <- mclapply(timesThanos, eliminarSpCeldas,
-#                          mc.cores = no_cores)
-   
-    
-    datosFinales <- matrix(unlist(lapply(borradas, FUN=conteo)),
-                           ncol=4,byrow=T)
-
-    verdaderosResultadosborrados  <-  as.data.frame(datosFinales)
-
-    names(verdaderosResultadosborrados) <- c(paste0("borrados_",
-                                                    c("cSp","mSp","cAr","mAr")))
-
-   resInicial  <- conteo(x)
-                           
-    tpt1  <- matrix(resInicial, ncol=4,nrow=nTimes,byrow=TRUE)
-
-    tpt1  <-  as.data.frame(tpt1)
-    
-    colnames(tpt1) <- c("cSp","mSp","cAr","mAr")
-    
-    ver1  <-  cbind(as.data.frame(tpt1),
-                    as.data.frame(verdaderosResultadosborrados))    
-    
-    return(ver1)
-}
-    
-
 #system.time(
+
+if(params$nBorrados > 0){
 
 asignadasBorradas  <- lapply(asignadasIniciales, FUN=tmp2, nTimes=params$nBorrados)   #)
 
@@ -180,7 +134,9 @@ finalDF <-  as.data.frame(cbind(salida0,salida1))
 
 print(finalDF, row.names = FALSE)
 
-
+}else{
+	MatrizIniciales
+	}
 
 
 
