@@ -92,52 +92,8 @@ MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
 
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
                                         #
-#MatrizIniciales
+posiciones  <- matrix(as.integer(unlist(strsplit(makeLatLong(5,10)," "))),ncol = 2, byrow = T)
 
+class(posiciones)
 
-#system.time(
-
-if(params$nBorrados > 0){
-
-asignadasBorradas  <- lapply(asignadasIniciales, FUN=tmp2, nTimes=params$nBorrados)   #)
-
-#asignadasBorradas 
-
-salida  <- do.call(rbind, asignadasBorradas)
-
-
-colnames(salida)  <-  c("cSp","mSp","cAr","mAr",
-                        "borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
-
-#salida
-
-#tpt2  <- matrix(resInicial, ncol=4,nrow=nTimes,byrow=TRUE)
-#tpt2  <-  as.data.frame(tpt1)
-
-
-salida0  <- as.data.frame(salida)
-
-cont  <- length(salida0$cSp)
-
-salida1  <- matrix(unlist(params),ncol=7,nrow=cont,byrow=TRUE)
-
-colnames(salida1)  <-  c(names(params))
-
-salida1  <-   as.data.frame(salida1)
-
-
-## to set accordingly
-
-options("width"=300)
-
-finalDF <-  as.data.frame(cbind(salida0,salida1))
-
-print(finalDF, row.names = FALSE)
-
-}else{
-	MatrizIniciales
-	}
-
-
-
-
+dist(posiciones)
