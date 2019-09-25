@@ -92,8 +92,7 @@ MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
 
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
                                         #
-posiciones  <- matrix(as.integer(unlist(strsplit(makeLatLong(5,10)," "))),ncol = 2, byrow = T)
 
-class(posiciones)
 
-dist(posiciones)
+makeLatLong(5,10)
+
