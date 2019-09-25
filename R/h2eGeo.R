@@ -75,7 +75,8 @@ params$nRate           <-   args[7]/100
 ## listado nSp NReplicas 
 listado  <- rep(params$nSp,params$nReplicas)
 
-#listado
+                                        #
+listado
 
 ## un listado de tablas limpias
 tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells) 
@@ -93,6 +94,48 @@ MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
                                         #
 
+head(MatrizIniciales)
 
-makeLatLong(5,10)
+dim(asignadasIniciales[[1]])
 
+matrizLatLong  <- makeLatLong(10,10)
+
+sp1  <- which(asignadasIniciales[[1]][1,]==1)
+
+length(sp1)
+
+
+MST.Propincuity(distancia)
+
+distancia  <- dist(matrizLatLong[sp1,])
+
+dist.Matrix  <- as.matrix(distancia)
+
+  large.value <- max(dist.Matrix) + 1
+  
+  diag(dist.Matrix) <- large.value
+  
+  minimos <- apply(dist.Matrix,1,min)
+  
+  parejas.minimos <- matrix(NA,nrow =length(minimos),ncol = 2 )
+  
+  for (i in 1:length(minimos)){
+    parejas.minimos[i,1] <- i
+    parejas.minimos[i,2] <- which(dist.Matrix[,i]==minimos[i])
+  }
+  
+  eliminar  <- NULL
+  
+  for (i in 1:(length(parejas.minimos[,1])-1)){
+    for (j in (i+1):length(parejas.minimos[,1])){
+      if (all(parejas.minimos[i,] %in% parejas.minimos[j,])){
+#        print(paste("a eliminar en ",i,"---",j))
+        parejas.minimos[j,] <-c(-rnorm(1),-rnorm(1))
+        eliminar <- c(eliminar,j) 
+      }
+    }
+  }
+  
+  minimos <- minimos[-eliminar]
+
+##Propincuity.2(distancia)

@@ -4,3 +4,4 @@ eliminarSpCeldas.R
 matrizLimpia.R
 misc.R
 makeLatlong.R
+propincuidad.R
