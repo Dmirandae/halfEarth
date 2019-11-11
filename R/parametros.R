@@ -7,7 +7,7 @@ params$nSp        <-  25
 
 params$nCells     <-  100 
 
-params$SpEnArea   <-  8
+params$SpInCell   <-  8
 
 params$nReplicas  <-  10
 

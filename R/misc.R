@@ -4,7 +4,7 @@ tmp1  <-  function(x){
                         asignarSpCeldas,
                         paramNum   = params$nRate,
                         distNum    = params$distribRichness,
-                        numSpArea  = params$SpEnArea)
+                        numSpArea  = params$SpInCell)
     
     return(matDatAsig)
     }

@@ -54,7 +54,7 @@ params$nSp             <-   args[1]
 
 params$nCells          <-   args[2]
 
-params$SpEnArea        <-   args[3]
+params$SpInCell        <-   args[3]
 
 params$nReplicas       <-   args[4]
 
