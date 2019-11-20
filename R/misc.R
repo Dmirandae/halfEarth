@@ -1,4 +1,4 @@
-tmp1  <-  function(x){
+crearMatrizDatos  <-  function(x){
     matDatAsig <- apply(x,
                         2,
                         asignarSpCeldas,
@@ -11,16 +11,26 @@ tmp1  <-  function(x){
 
 
 
-tmp2  <-  function(x,nTimes,probThanos=params$propBorra){
+perturbarMatriz  <-  function(x,nTimes,probThanos=params$propBorra){
+
+
+## lista de matrices para perturar
 
     timesThanos  <-  list()
+
+## n copias de la matriz inicial, tantas como replicas se hayan propuesto
 
     for(numTemp0 in 1:nTimes){
 
         timesThanos[[numTemp0]]  <- x
     }
 
-     borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas,probThanos=params$propBorra)
+## lista lista
+
+
+## borrar de acuerdo a la probabilidad de borrado por area
+
+     borradas  <- lapply(timesThanos, FUN=eliminarSpMatriz,probThanos=params$propBorra)
     
 #    borradas  <- mclapply(timesThanos, eliminarSpCeldas,
 #                          mc.cores = no_cores)

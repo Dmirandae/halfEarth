@@ -27,7 +27,7 @@ asignarSpCeldas  <- function (vectorX,
       if(distNum=="2" ){
         ## to use later
         
-        spID  <- c(1 + as.integer(rexp(params$SpInCell,paramNum)))
+        spID  <- c(1 + as.integer(rexp(params$SpEnArea,paramNum)))
         
         spID[spID > numSpArea ]  <-  numSpArea
         

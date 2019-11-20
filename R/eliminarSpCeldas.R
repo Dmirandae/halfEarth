@@ -1,19 +1,19 @@
 
+eliminarSpMatriz  <- function (matrixX,probThanos=params$propBorra){
 
-eliminarSpCeldas  <- function (matrixX,probThanos=params$propBorra){
+mX <- matrixX
 
 eliminarCeldas  <- function (vectorX,probThanos=params$propBorra){
 
 #cat(probThanos,"\t**")
 
-
     if(runif(1) <= probThanos){
 
- print(vectorX[]) 
+# print(vectorX[]) 
  
         vectorX[]  <- 0
  
- print(vectorX[]) 
+# print(vectorX[]) 
     
 }
     
@@ -26,6 +26,8 @@ for (contador in 1:params$nCells){
 	matrixX[,contador] <- eliminarCeldas(matrixX[,contador])
 	
 	}
+
+print(all(mX == matrixX))
 
     return(matrixX)
 }

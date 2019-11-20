@@ -88,7 +88,7 @@ tablasLimpias  <- lapply(listado,crearMatrizLimpia,numCells=params$nCells)
                                         #
 #head(tablasLimpias[[1]])
 
-asignadasIniciales  <- lapply(tablasLimpias, FUN=crearMatrizDatos)
+asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1)
 
                                         #
 #head(asignadasIniciales[[1]])
@@ -111,7 +111,7 @@ colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
 if(params$propBorra != 0.0){
 
     asignadasBorradas <- lapply(asignadasIniciales,
-                             FUN=perturbarMatriz,
+                             FUN=tmp2,
                              nTimes=params$nReplicas,
                              probThanos=params$propBorra)   #
 #asignadasBorradas[[1]]
