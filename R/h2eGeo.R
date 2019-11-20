@@ -58,9 +58,9 @@ params$SpInCell        <-   args[3]
 
 params$nReplicas       <-   args[4]
 
-params$nBorrados       <-   args[5]
+params$propBorra       <-   args[5]
 
-#if(params$nBorrados <= 0){params$nBorrados <- 1}
+#if(params$propBorra <= 0){params$propBorra <- 1}
 
 params$distribRichness <-   as.character(args[6])
 

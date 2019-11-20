@@ -11,7 +11,7 @@ tmp1  <-  function(x){
 
 
 
-tmp2  <-  function(x,nTimes){
+tmp2  <-  function(x,nTimes,probThanos=params$propBorra){
 
     timesThanos  <-  list()
 
@@ -20,7 +20,7 @@ tmp2  <-  function(x,nTimes){
         timesThanos[[numTemp0]]  <- x
     }
 
-     borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas)
+     borradas  <- lapply(timesThanos, FUN=eliminarSpCeldas,probThanos=params$propBorra)
     
 #    borradas  <- mclapply(timesThanos, eliminarSpCeldas,
 #                          mc.cores = no_cores)

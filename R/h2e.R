@@ -31,7 +31,9 @@ for( i in a$V1 ){
 
 
 
+#~ if (1==1) {
 if (!interactive()) {
+
 
 ## https://www.r-bloggers.com/passing-arguments-to-an-r-script-from-command-lines/
 
@@ -57,11 +59,11 @@ params$SpInCell        <-   args[3]
 
 params$nReplicas       <-   args[4]
 
-params$nBorrados       <-   args[5]
+params$propBorra       <-   args[5]/100
 
 ## el numero de borrados esta como valor abosluto ojo
 
-#if(params$nBorrados <= 0){params$nBorrados <- 1}
+#if(params$propBorra <= 0){params$propBorra <- 1}
 
 params$distribRichness <-   as.character(args[6])
 
@@ -76,20 +78,22 @@ params$nRate           <-   args[7]/100
 ## listado nSp NReplicas
 listado  <- rep(params$nSp,params$nReplicas)
 
-listado
+params
+
+#listado
 
 ## un listado de tablas limpias
 tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells)
 
                                         #
-head(tablasLimpias[[1]])
+#head(tablasLimpias[[1]])
 
 asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1)
 
                                         #
-head(asignadasIniciales[[1]])
-head(asignadasIniciales[[2]])
-head(asignadasIniciales[[3]])
+#head(asignadasIniciales[[1]])
+#head(asignadasIniciales[[2]])
+#head(asignadasIniciales[[3]])
 
                                         #cat("\n")
 
@@ -99,19 +103,19 @@ MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
 
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
                                         #
-MatrizIniciales
+#MatrizIniciales
 
 
 #system.time(
 
-if(params$nBorrados > 0){
+if(params$propBorra != 0.0){
 
     asignadasBorradas <- lapply(asignadasIniciales,
                              FUN=tmp2,
-                             nTimes=params$nReplicas)   #)
-
-asignadasBorradas[[1]]
-asignadasBorradas[[2]]
+                             nTimes=params$nReplicas,
+                             probThanos=params$propBorra)   #
+#asignadasBorradas[[1]]
+#asignadasBorradas[[2]]
 
 salida  <- do.call(rbind, asignadasBorradas)
 

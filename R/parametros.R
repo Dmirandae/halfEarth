@@ -11,7 +11,7 @@ params$SpInCell   <-  10
 
 params$nReplicas  <-  3
 
-params$nBorrados    <-  5
+params$propBorra    <-  0.5
 
 params$distribRichness <- "fix"
 
