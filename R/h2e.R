@@ -108,9 +108,10 @@ if(params$nBorrados > 0){
 
     asignadasBorradas <- lapply(asignadasIniciales,
                              FUN=tmp2,
-                             nTimes=params$nBorrados)   #)
+                             nTimes=params$nReplicas)   #)
 
 asignadasBorradas[[1]]
+asignadasBorradas[[2]]
 
 salida  <- do.call(rbind, asignadasBorradas)
 
