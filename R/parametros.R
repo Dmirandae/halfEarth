@@ -5,13 +5,13 @@ params <- list()
 
 params$nSp        <-  25
 
-params$nCells     <-  100 
+params$nCells     <-  10
 
-params$SpInCell   <-  8
+params$SpInCell   <-  10
 
-params$nReplicas  <-  10
+params$nReplicas  <-  3
 
-params$nBorrados    <-  10
+params$nBorrados    <-  5
 
 params$distribRichness <- "fix"
 

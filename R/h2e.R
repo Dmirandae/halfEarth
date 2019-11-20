@@ -1,4 +1,3 @@
-
 ## todo : Roxygen!!!!!
 
 ############################
@@ -11,17 +10,17 @@ source("parametros.R")
 
 a <- read.csv("source.R",header=F)
 
-for( i in a$V1 ){ 
-	source(i) 
-	}
+for( i in a$V1 ){
+    source(i)
+    }
 
 
 
 ##library(parallel)
- 
+
 # Calculate the number of cores
 #no_cores <- detectCores() - 1
- 
+
 # Initiate cluster
                                         #
 #cl <- makeCluster(no_cores)
@@ -43,12 +42,12 @@ if (!interactive()) {
             names(params),
             "\n")
         quit(save="no")
-    }       
+    }
 
     if(length(args) != 0){args <- as.integer(as.character(args))
-		}else{
-			args <- as.integer(args[1:7])
-			}
+        }else{
+            args <- as.integer(args[1:7])
+            }
 
 params$nSp             <-   args[1]
 
@@ -59,6 +58,8 @@ params$SpInCell        <-   args[3]
 params$nReplicas       <-   args[4]
 
 params$nBorrados       <-   args[5]
+
+## el numero de borrados esta como valor abosluto ojo
 
 #if(params$nBorrados <= 0){params$nBorrados <- 1}
 
@@ -72,36 +73,44 @@ params$nRate           <-   args[7]/100
 ## print(unlist(params))
 
 
-## listado nSp NReplicas 
+## listado nSp NReplicas
 listado  <- rep(params$nSp,params$nReplicas)
 
-#listado
+listado
 
 ## un listado de tablas limpias
-tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells) 
+tablasLimpias  <- lapply(listado,matrizLimpia,numCells=params$nCells)
 
-#tablasLimpias
+                                        #
+head(tablasLimpias[[1]])
 
-asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1) 
+asignadasIniciales  <- lapply(tablasLimpias, FUN=tmp1)
 
-#asignadasIniciales
-#cat("\n")
+                                        #
+head(asignadasIniciales[[1]])
+head(asignadasIniciales[[2]])
+head(asignadasIniciales[[3]])
+
+                                        #cat("\n")
 
 MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
                            ncol=4,byrow=T)
 
+
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
                                         #
-#MatrizIniciales
+MatrizIniciales
 
 
 #system.time(
 
 if(params$nBorrados > 0){
 
-asignadasBorradas  <- lapply(asignadasIniciales, FUN=tmp2, nTimes=params$nBorrados)   #)
+    asignadasBorradas <- lapply(asignadasIniciales,
+                             FUN=tmp2,
+                             nTimes=params$nBorrados)   #)
 
-#asignadasBorradas 
+asignadasBorradas[[1]]
 
 salida  <- do.call(rbind, asignadasBorradas)
 
@@ -135,8 +144,5 @@ finalDF <-  as.data.frame(cbind(salida0,salida1))
 print(finalDF, row.names = FALSE)
 
 }else{
-	MatrizIniciales
-	}
-
-
-
+    MatrizIniciales
+    }
