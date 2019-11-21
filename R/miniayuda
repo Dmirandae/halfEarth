@@ -1,0 +1,100 @@
+Uso Rscript x.R parámetros en secuencia:
+         nSp nCells SpInCell nReplicas propBorra distribRichness nRate 
+
+nSp 				entero: número total de especies
+nCells 				entero: número  total de celdas   
+            
+            los dos números anteriores indican el tamaño de la matriz == área
+            
+SpInCell 			entero: número especies por celda [[sin control de error, no debe ser mas grande que nSp]]
+nReplicas 			entero: número de réplicas de borrado y repetición [[!!]]
+propBorra 			entero: 1.100 proporción de borrado 
+distribRichness 	0 o 1:  (por lo pronto) 
+						0 llenado de celdas dist uniforme usando sample 
+						1 llenado de celdas dist exponencial usando nRate
+nRate 				entero: 1.100 rate para exponencial
+ 
+ 
+ 
+En la salida cada caso/línea es una réplica 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+		 Thu Nov 21 10:12:33 2019 
+Uso Rscript x.R parámetros en secuencia:
+	 nSp nCells SpInCell nReplicas propBorra distribRichness nRate 
+
+Una afirmación sin datos es solo una OPINIÓN::  Thu Nov 21 10:12:34 2019 

@@ -3,6 +3,11 @@ asignarSpCeldas  <- function (vectorX,
                               numSpArea=1,
                               distNum="fix", 
                               paramNum=0.5){
+
+##
+## tres distNum
+## fix = 0 = homogenea sample
+##  != 0 exponencial rexp por defecto 0.5 modificable via nRate
 							  
 	vectorY <- vectorX
 							  
@@ -14,7 +19,9 @@ asignarSpCeldas  <- function (vectorX,
 
     }else{
 		
-        numSpArea  <- c(1 + as.integer(rexp(1,paramNum))) }    ## como mínimo 1, tambien puede cambiarse
+        numSpArea  <- c(1 + as.integer(rexp(1,paramNum))) }    
+        
+        ## como mínimo 1, tambien puede cambiarse
         
         #print(numSpArea)
         
@@ -24,8 +31,7 @@ asignarSpCeldas  <- function (vectorX,
         
         vectorX[sample(length(vectorX), numSpArea)]  <- 1
      
-      if(distNum=="2" ){
-        ## to use later
+      if(distNum=="2" ){ ## to use later
         
         spID  <- c(1 + as.integer(rexp(params$SpEnArea,paramNum)))
         
@@ -41,7 +47,8 @@ asignarSpCeldas  <- function (vectorX,
         
         vectorX <- vectorY
 
-}
+        }
+
 if (sum(vectorX) == 0){stop("Uhmm uhmmm")}
     
     return(vectorX)
