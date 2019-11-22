@@ -154,8 +154,20 @@ salida1  <- matrix(unlist(params),ncol=8,nrow=cont,byrow=TRUE)
 colnames(salida1)  <-  c(names(params))
 
 #    salida1
+
 salida1  <-   as.data.frame(salida1)
 
+salida1$nReplicas     <- rep((1:params$nReplicas),params$nRepeticiones)
+
+repetir0 <- (1:params$nRepeticiones)
+
+vecesRepetir <- function(i){rep(i,params$nReplicas)}
+
+repetir <- lapply(repetir0,vecesRepetir) 
+
+salida1$nRepeticiones <- unlist(repetir)
+
+##print(head(salida1))
 
 ## to set accordingly
 
