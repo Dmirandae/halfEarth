@@ -10,9 +10,12 @@ crearMatrizDatos  <-  function(x){
     }
 
 
+######################3
+
+
+
 
 perturbarMatriz  <-  function(x,nTimes,probThanos=params$propBorra){
-
 
 ## lista de matrices para perturar
 

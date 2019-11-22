@@ -31,9 +31,9 @@ for( i in a$V1 ){
 
 
 
-#~ if (1==1) {
 if (!interactive()) {
 
+#if (1 != 1) {
 
 ## https://www.r-bloggers.com/passing-arguments-to-an-r-script-from-command-lines/
 
@@ -48,7 +48,7 @@ if (!interactive()) {
 
     if(length(args) != 0){args <- as.integer(as.character(args))
         }else{
-            args <- as.integer(args[1:7])
+            args <- as.integer(args[1:8])
             }
 
 params$nSp             <-   args[1]
@@ -57,17 +57,23 @@ params$nCells          <-   args[2]
 
 params$SpInCell        <-   args[3]
 
+if(params$SpInCell > params$nSp){
+	params$SpInCell <- params$nSp
+	}
+
 params$nReplicas       <-   args[4]
 
 params$propBorra       <-   args[5]/100
 
-## el numero de borrados esta como valor abosluto ojo
-
-#if(params$propBorra <= 0){params$propBorra <- 1}
+if(params$propBorra > 100){
+	params$propBorra <- 100
+	}
 
 params$distribRichness <-   as.character(args[6])
 
 params$nRate           <-   args[7]/100
+
+params$nRepeticiones   <-   args[8]
 
 }
 
@@ -76,21 +82,26 @@ params$nRate           <-   args[7]/100
 
 
 ## listado nSp NReplicas
-listado  <- rep(params$nSp,params$nReplicas)
-
-params
+listado  <- rep(params$nSp,params$nRepeticiones)
 
 #listado
 
+#params
+
 ## un listado de tablas limpias
-tablasLimpias  <- lapply(listado,crearMatrizLimpia,numCells=params$nCells)
+tablasLimpias  <- lapply(listado,crearMatrizLimpia,
+                          numCells=params$nCells)
 
                                         #
+#length(tablasLimpias)
 #head(tablasLimpias[[1]])
 
 asignadasIniciales  <- lapply(tablasLimpias, FUN=crearMatrizDatos)
 
                                         #
+
+                                        #
+#length(asignadasIniciales)
 #head(asignadasIniciales[[1]])
 #head(asignadasIniciales[[2]])
 #head(asignadasIniciales[[3]])
@@ -103,6 +114,7 @@ MatrizIniciales  <- matrix(unlist(lapply(asignadasIniciales, FUN=conteo)),
 
 colnames(MatrizIniciales) <- c("cSp","mSp","cAr","mAr")
                                         #
+                                        #
 #MatrizIniciales
 
 
@@ -114,29 +126,34 @@ if(params$propBorra != 0.0){
                              FUN=perturbarMatriz,
                              nTimes=params$nReplicas,
                              probThanos=params$propBorra)   #
+
+                                        #
 #asignadasBorradas[[1]]
 #asignadasBorradas[[2]]
 
 salida  <- do.call(rbind, asignadasBorradas)
 
+#salida
 
 colnames(salida)  <-  c("cSp","mSp","cAr","mAr",
                         "borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
 
-#salida
+                                        #
+#    salida
 
-#tpt2  <- matrix(resInicial, ncol=4,nrow=nTimes,byrow=TRUE)
-#tpt2  <-  as.data.frame(tpt1)
 
 
 salida0  <- as.data.frame(salida)
 
-cont  <- length(salida0$cSp)
+#    salida0
 
-salida1  <- matrix(unlist(params),ncol=7,nrow=cont,byrow=TRUE)
+    cont  <- length(salida0$cSp)
+
+salida1  <- matrix(unlist(params),ncol=8,nrow=cont,byrow=TRUE)
 
 colnames(salida1)  <-  c(names(params))
 
+#    salida1
 salida1  <-   as.data.frame(salida1)
 
 
