@@ -149,7 +149,7 @@ salida0  <- as.data.frame(salida)
 
     cont  <- length(salida0$cSp)
 
-salida1  <- matrix(unlist(params),ncol=8,nrow=cont,byrow=TRUE)
+salida1  <- matrix(as.numeric(unlist(params)),ncol=8,nrow=cont,byrow=TRUE)
 
 colnames(salida1)  <-  c(names(params))
 
