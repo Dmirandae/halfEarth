@@ -1,0 +1,17 @@
+read.csv("salida")
+head(read.csv("salida"))
+head(read.csv("salida",sep=" "))
+head(read.csv("salida",sep="\t"))
+head(read.csv("salida",sep=" "))
+q()
+head(read.csv("salida",sep=";"))
+datosHe <- read.csv("salida",sep=";")
+qplot(datosHe$cSp,datosHe$borrados_cSp)
+library(qqplot2)
+library(ggplot2)
+qplot(datosHe$cSp,datosHe$borrados_cSp)
+qplot(datosHe$borrados_mSp,datosHe$borrados_cSp)
+?write.table
+q()
+?write.table
+q()
