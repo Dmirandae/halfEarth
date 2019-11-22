@@ -175,7 +175,7 @@ options("width"=300)
 
 finalDF <-  as.data.frame(cbind(salida0,salida1))
 
-print(finalDF, row.names = FALSE)
+write.table(finalDF, row.names = FALSE, sep=";")
 
 }else{
     MatrizIniciales

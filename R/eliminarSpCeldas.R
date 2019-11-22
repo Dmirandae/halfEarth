@@ -27,7 +27,7 @@ for (contador in 1:params$nCells){
 	
 	}
 
-print(all(mX == matrixX))
+###print(all(mX == matrixX))
 
     return(matrixX)
 }
