@@ -40,9 +40,10 @@ if (!interactive()) {
     args <- commandArgs(trailingOnly = TRUE)
 
     if (length(args)==0){
-        cat("Uso Rscript x.R parámetros en secuencia:\n\t",
+		for(i in 1:80){cat("\n")}
+        cat("\t\tUso:\n\nRscript x.R parámetros en secuencia:\n\n\t",
             names(params),
-            "\n")
+            "\n\n")
         quit(save="no")
     }
 
