@@ -40,7 +40,7 @@ if (!interactive()) {
     args <- commandArgs(trailingOnly = TRUE)
 
     if (length(args)==0){
-		for(i in 1:80){cat("\n")}
+        for(i in 1:80){cat("\n")}
         cat("\t\tUso:\n\nRscript x.R parámetros en secuencia:\n\n\t",
             names(params),
             "\n\n")
@@ -59,16 +59,16 @@ params$nCells          <-   args[2]
 params$SpInCell        <-   args[3]
 
 if(params$SpInCell > params$nSp){
-	params$SpInCell <- params$nSp
-	}
+    params$SpInCell <- params$nSp
+    }
 
 params$nReplicas       <-   args[4]
 
 params$propBorra       <-   args[5]/100
 
 if(params$propBorra > 100){
-	params$propBorra <- 100
-	}
+    params$propBorra <- 100
+    }
 
 params$distribRichness <-   as.character(args[6])
 
@@ -87,7 +87,7 @@ listado  <- rep(params$nSp,params$nRepeticiones)
 
 #listado
 
-#params
+                                        #params
 
 ## un listado de tablas limpias
 tablasLimpias  <- lapply(listado,crearMatrizLimpia,
@@ -137,7 +137,7 @@ salida  <- do.call(rbind, asignadasBorradas)
 #salida
 
 colnames(salida)  <-  c("cSp","mSp","cAr","mAr",
-                        "borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
+                                              "borrados_cSp","borrados_mSp"," borrados_cAr"," borrados_mAr")
 
                                         #
 #    salida
@@ -164,7 +164,7 @@ repetir0 <- (1:params$nRepeticiones)
 
 vecesRepetir <- function(i){rep(i,params$nReplicas)}
 
-repetir <- lapply(repetir0,vecesRepetir) 
+repetir <- lapply(repetir0,vecesRepetir)
 
 salida1$nRepeticiones <- unlist(repetir)
 
@@ -176,7 +176,13 @@ options("width"=300)
 
 finalDF <-  as.data.frame(cbind(salida0,salida1))
 
-write.table(finalDF, row.names = FALSE, sep=";")
+    nombreArchivo <- paste(params,collapse = "_")
+
+    nombreArchivo  <-        paste("heOutput",nombreArchivo, format(Sys.time(), "%a_%b_%d_%X_%Y"),sep="_")
+
+
+
+    write.table(finalDF, row.names = FALSE, sep=";", file = nombreArchivo)
 
 }else{
     MatrizIniciales
