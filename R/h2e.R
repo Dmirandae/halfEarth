@@ -178,11 +178,17 @@ finalDF <-  as.data.frame(cbind(salida0,salida1))
 
     nombreArchivo <- paste(params,collapse = "_")
 
-    nombreArchivo  <-        paste("heOutput",nombreArchivo, format(Sys.time(), "%a_%b_%d_%X_%Y"),sep="_")
+    hora  <- sub(" ","_",Sys.time())
 
 
+    nombreArchivo  <-        paste0("h2Output_",nombreArchivo,"_",hora,".out")
+
+    dir.create(file.path("../output/"), showWarnings = FALSE)
+    setwd("../output/")
 
     write.table(finalDF, row.names = FALSE, sep=";", file = nombreArchivo)
+
+    cat("\n\n\toutput saved\n\n\n")
 
 }else{
     MatrizIniciales
