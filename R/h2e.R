@@ -183,12 +183,15 @@ finalDF <-  as.data.frame(cbind(salida0,salida1))
 
     nombreArchivo  <-        paste0("h2Output_",nombreArchivo,"_",hora,".out")
 
+
     dir.create(file.path("../output/"), showWarnings = FALSE)
     setwd("../output/")
 
     write.table(finalDF, row.names = FALSE, sep=";", file = nombreArchivo)
 
-    cat("\n\n\toutput saved\n\n\n")
+    aqui <- getwd()
+
+    cat("\n\n\toutput saved\n\t",aqui,"\n\t",nombreArchivo,"\n\n\n")
 
 }else{
     MatrizIniciales
